@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" href="./img/fav.svg" type="image/svg+xml">
+  <title>Calculadora de Gorjetas</title>
+</head>
+
+<body>
+
+  <main>
+    <div class="grid-dados">
+      <div class="fatura-div">
+        <label for="fatura">Fatura</label>
+        <input type="text" name="fatura" id="fatura">
+      </div>
+
+      <div class="gorjeta-div">
+        <label for="personalizar">Selecione a % de Gorjeta</label>
+        <div class="gorjeta">
+          <button>5%</button>
+          <button>10%</button>
+          <button>15%</button>
+          <button>25%</button>
+          <button>50%</button>
+          <input type="text" name="personalizar" id="personalizar" placeholder="Custom">
+        </div>
+      </div>
+
+      <div class="pessoas-div">
+        <label for="pessoas">Número de Pessoas</label>
+        <input type="text" name="pessoas" id="pessoas">
+      </div>
+
+    </div>
+    <div class="grid-resultado">
+      <div class="cima">
+        <div class="resultado gorjeta">
+          <div>
+            <p>Valor da Gorjeta</p>
+            <span>/ por pessoa</span>
+          </div>
+          <span>R$0,00</span>
+        </div>
+
+        <div class="resultado total">
+          <div>
+            <p>Valor da Gorjeta</p>
+            <span>/ por pessoa</span>
+          </div>
+          <span>R$0,00</span>
+        </div>
+      </div>
+
+      <div class="baixo">
+        <button>Resetar</button>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+
+</html>
