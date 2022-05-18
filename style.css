@@ -1,0 +1,195 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #e0eef9;
+}
+
+main {
+  max-width: 920px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #fff;
+  border-radius: 13px;
+}
+
+.grid-dados {
+  padding: 48px 23px 48px 48px;
+}
+
+.fatura-div,
+.pessoas-div {
+  position: relative;
+}
+
+.fatura-div::before,
+.pessoas-div::before {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 48px;
+  left: 20px;
+}
+
+.fatura-div::before {
+  width: 11px;
+  height: 17px;
+  background-image: url("./img/icon-dollar.svg");
+}
+
+.pessoas-div::before {
+  width: 13px;
+  height: 16px;
+  background-image: url("./img/icon-person.svg");
+}
+
+.fatura-div > input,
+.pessoas-div > input {
+  display: block;
+  margin-top: 6px;
+  font-size: 24px;
+  padding: 6px 17px;
+  padding-left: 46px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  background-color: #e0eef9;
+  text-align: right;
+  border: 2px solid #e0eef9;
+  color: #00234c;
+  transition: 0.2s;
+}
+
+.fatura-div > input:focus,
+.pessoas-div > input:focus {
+  border: 2px solid #18a0fb;
+}
+
+.gorjeta {
+  margin-top: 16px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, 117px);
+  grid-template-rows: repeat(2, 48px);
+}
+
+.gorjeta > button {
+  background-color: #00234c;
+  border-radius: 4px;
+  border: none;
+  font-size: 24px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.gorjeta > button:hover {
+  background-color: #18a0fb;
+  color: #00234c;
+}
+
+.gorjeta > input {
+  font-size: 24px;
+  padding: 6px 13px;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  background-color: #e0eef9;
+  text-align: right;
+  border: 2px solid #e0eef9;
+  color: #00234c;
+  transition: 0.2s;
+}
+
+.gorjeta > input:focus {
+  border: 2px solid #18a0fb;
+}
+
+.gorjeta > input::placeholder {
+  font-size: 24px;
+  text-align: center;
+  color: #00234c;
+}
+
+.gorjeta-div,
+.pessoas-div {
+  margin-top: 40px;
+}
+
+label {
+  display: block;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.grid-resultado {
+  padding: 32px 32px 32px 23px;
+}
+
+.bg {
+  background-color: #00234c;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 40px;
+  padding-top: 56px;
+  border-radius: 13px;
+}
+
+.resultado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.resultado > span {
+  font-size: 48px;
+  letter-spacing: -0.01em;
+  color: #18a0fb;
+}
+
+.resultado > div > p {
+  color: #fff;
+  font-size: 16px;
+}
+
+.resultado > div > span {
+  font-size: 13px;
+  color: #fff;
+}
+
+.total {
+  margin-top: 40px;
+}
+
+.baixo > button {
+  color: #00234c;
+  background-color: #18a0fb;
+  font-size: 20px;
+  text-transform: uppercase;
+  padding: 10px;
+  width: 100%;
+  border-radius: 7px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.baixo > button:hover {
+  background-color: #4ab7ff;
+}
+input,
+.gorjeta > button {
+}
