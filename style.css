@@ -6,6 +6,15 @@
   font-weight: 700;
 }
 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -70,6 +79,11 @@ main {
   transition: 0.2s;
 }
 
+.fatura-div > input::placeholder,
+.pessoas-div > input::placeholder {
+  color: #00234c79;
+}
+
 .fatura-div > input:focus,
 .pessoas-div > input:focus {
   border: 2px solid #18a0fb;
@@ -91,6 +105,17 @@ main {
   color: #ffffff;
   cursor: pointer;
   transition: 0.2s;
+}
+
+.gorjeta > button.active {
+  background-color: #18a0fb;
+  color: #00234c;
+}
+
+.gorjeta > input.active {
+  text-align: center;
+  background-color: #18a0fb;
+  color: #00234c;
 }
 
 .gorjeta > button:hover {
@@ -119,7 +144,7 @@ main {
 .gorjeta > input::placeholder {
   font-size: 24px;
   text-align: center;
-  color: #00234c;
+  color: #00234c79;
 }
 
 .gorjeta-div,
@@ -189,7 +214,4 @@ label {
 
 .baixo > button:hover {
   background-color: #4ab7ff;
-}
-input,
-.gorjeta > button {
 }
