@@ -1,3 +1,11 @@
+const buttonReset = document.querySelector(".baixo > button");
+const inputPessoas = document.querySelector("#pessoas");
+const inputFatura = document.querySelector("#fatura");
+const inputGorjeta = document.querySelector("#personalizar");
+const botoes = document.querySelectorAll(".gorjeta > button");
+const gorjeta = document.querySelector(".gorjeta > span");
+const total = document.querySelector(".total > span");
+
 let valorFatura;
 let valorPessoas;
 let porcentagemGorjeta;
@@ -19,6 +27,8 @@ function calcula() {
       style: "currency",
       currency: "BRL",
     });
+
+    buttonReset.removeAttribute("disabled");
   }
 }
 
@@ -88,3 +98,21 @@ function initPorcentagemGorjeta_ParteDoMeio() {
   });
 }
 initPorcentagemGorjeta_ParteDoMeio();
+
+function resetaTudo() {
+  function reseta() {
+    inputPessoas.value = "";
+    inputFatura.value = "";
+    inputGorjeta.value = "";
+    botoes.forEach((botao) => botao.classList.remove("active"));
+    buttonReset.setAttribute("disabled", "");
+    gorjeta.innerHTML = `R$ 0,00`;
+    total.innerHTML = `R$ 0,00`;
+    valorFatura = 0;
+    valorPessoas = 0;
+    porcentagemGorjeta = 0;
+  }
+
+  buttonReset.addEventListener("click", reseta);
+}
+resetaTudo();

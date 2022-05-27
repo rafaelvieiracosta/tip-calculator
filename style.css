@@ -217,6 +217,6 @@ label {
   background-color: #4ab7ff;
 }
 
-.baixo > button:disabled{
-  background-color: red;
+.baixo > button:disabled {
+  background-color: #18a0fb3b;
 }
