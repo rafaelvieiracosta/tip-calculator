@@ -135,6 +135,7 @@ main {
   border: 2px solid #e0eef9;
   color: #00234c;
   transition: 0.2s;
+  justify-content: center;
 }
 
 .gorjeta > input:focus {
@@ -214,4 +215,8 @@ label {
 
 .baixo > button:hover {
   background-color: #4ab7ff;
+}
+
+.baixo > button:disabled{
+  background-color: red;
 }

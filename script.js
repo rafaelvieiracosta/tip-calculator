@@ -2,14 +2,32 @@ let valorFatura;
 let valorPessoas;
 let porcentagemGorjeta;
 
+function calcula() {
+  if (valorFatura && valorPessoas && porcentagemGorjeta) {
+    const gorjeta = document.querySelector(".gorjeta > span");
+    const total = document.querySelector(".total > span");
+
+    let valorFinalGorjeta =
+      (valorFatura * (porcentagemGorjeta / 100)) / valorPessoas;
+    let valorFinalTotal = valorFatura / valorPessoas + valorFinalGorjeta;
+
+    gorjeta.innerHTML = valorFinalGorjeta.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+    total.innerHTML = valorFinalTotal.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    });
+  }
+}
+
 function validaInputFatura() {
   const inputFatura = document.querySelector("#fatura");
 
   function verificaInput() {
-    console.log(this.value);
-    if (`${this.value}`.endsWith(".")) {
-      this.classList.add("erro");
-    }
+    valorFatura = this.value;
+    calcula();
   }
 
   inputFatura.addEventListener("keyup", verificaInput);
@@ -19,9 +37,12 @@ validaInputFatura();
 function validaInputPessoas() {
   const inputPessoas = document.querySelector("#pessoas");
 
-  inputPessoas.addEventListener("keyup", () => {
-    valorPessoas = inputPessoas.value;
-  });
+  function verificaInputP() {
+    valorPessoas = this.value;
+    calcula();
+  }
+
+  inputPessoas.addEventListener("keyup", verificaInputP);
 }
 validaInputPessoas();
 
@@ -33,6 +54,7 @@ function initPorcentagemGorjeta_ParteDoMeio() {
     botoes.forEach((botao) => botao.classList.remove("active"));
     this.classList.add("active");
     porcentagemGorjeta = +this.innerText.replace("%", "");
+    calcula();
 
     inputGorjeta.value = "";
     inputGorjeta.classList.remove("active");
@@ -56,6 +78,7 @@ function initPorcentagemGorjeta_ParteDoMeio() {
 
   inputGorjeta.addEventListener("keyup", () => {
     porcentagemGorjeta = +inputGorjeta.value;
+    calcula();
   });
 
   inputGorjeta.addEventListener("click", () => {

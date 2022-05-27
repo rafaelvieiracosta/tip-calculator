@@ -19,7 +19,7 @@
     <div class="grid-dados">
       <div class="fatura-div">
         <label for="fatura">Fatura</label>
-        <input type="number" name="fatura" id="fatura" placeholder="0">
+        <input type="number" step="0.01" name="quantity" min="0.01" name="fatura" id="fatura" placeholder="0">
       </div>
 
       <div class="gorjeta-div">
@@ -48,7 +48,7 @@
               <p>Gorjeta</p>
               <span>/ por pessoa</span>
             </div>
-            <span>R$0,00</span>
+            <span>R$ 0,00</span>
           </div>
 
           <div class="resultado total">
@@ -56,12 +56,12 @@
               <p>Total</p>
               <span>/ por pessoa</span>
             </div>
-            <span>R$0,00</span>
+            <span>R$ 0,00</span>
           </div>
         </div>
 
         <div class="baixo">
-          <button>Resetar</button>
+          <button disabled>Resetar</button>
         </div>
       </div>
 
