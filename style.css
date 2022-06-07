@@ -89,6 +89,25 @@ main {
   border: 2px solid #18a0fb;
 }
 
+.pessoas-div > span,
+.fatura-div > span {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #ca3e3e;
+}
+
+.fatura-div.erro > input,
+.pessoas-div.erro > input {
+  border-color: #ca3e3e;
+}
+
+.pessoas-div.erro > span,
+.fatura-div.erro > span {
+  display: initial;
+}
+
 .gorjeta {
   margin-top: 16px;
   display: grid;
@@ -116,6 +135,7 @@ main {
   text-align: center;
   background-color: #18a0fb;
   color: #00234c;
+  border: none;
 }
 
 .gorjeta > button:hover {

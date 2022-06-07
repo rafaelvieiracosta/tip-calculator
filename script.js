@@ -1,10 +1,10 @@
-const buttonReset = document.querySelector(".baixo > button");
-const inputPessoas = document.querySelector("#pessoas");
 const inputFatura = document.querySelector("#fatura");
-const inputGorjeta = document.querySelector("#personalizar");
 const botoes = document.querySelectorAll(".gorjeta > button");
+const inputGorjeta = document.querySelector("#personalizar");
+const inputPessoas = document.querySelector("#pessoas");
 const gorjeta = document.querySelector(".gorjeta > span");
 const total = document.querySelector(".total > span");
+const buttonReset = document.querySelector(".baixo > button");
 
 let valorFatura;
 let valorPessoas;
@@ -12,9 +12,6 @@ let porcentagemGorjeta;
 
 function calcula() {
   if (valorFatura && valorPessoas && porcentagemGorjeta) {
-    const gorjeta = document.querySelector(".gorjeta > span");
-    const total = document.querySelector(".total > span");
-
     let valorFinalGorjeta =
       (valorFatura * (porcentagemGorjeta / 100)) / valorPessoas;
     let valorFinalTotal = valorFatura / valorPessoas + valorFinalGorjeta;
@@ -33,11 +30,15 @@ function calcula() {
 }
 
 function validaInputFatura() {
-  const inputFatura = document.querySelector("#fatura");
 
   function verificaInput() {
     valorFatura = this.value;
-    calcula();
+    if(this.value === '0'){
+      inputFatura.parentElement.classList.add('erro')
+    } else {
+      inputFatura.parentElement.classList.remove('erro')
+      calcula();
+    }
   }
 
   inputFatura.addEventListener("keyup", verificaInput);
@@ -45,11 +46,15 @@ function validaInputFatura() {
 validaInputFatura();
 
 function validaInputPessoas() {
-  const inputPessoas = document.querySelector("#pessoas");
 
   function verificaInputP() {
     valorPessoas = this.value;
-    calcula();
+    if(+this.value === 0){
+      inputPessoas.parentElement.classList.add('erro')
+    } else {
+      inputPessoas.parentElement.classList.remove('erro')
+      calcula();
+    }
   }
 
   inputPessoas.addEventListener("keyup", verificaInputP);
@@ -57,8 +62,6 @@ function validaInputPessoas() {
 validaInputPessoas();
 
 function initPorcentagemGorjeta_ParteDoMeio() {
-  const inputGorjeta = document.querySelector("#personalizar");
-  const botoes = document.querySelectorAll(".gorjeta > button");
 
   function aplicaClassAosBotoes() {
     botoes.forEach((botao) => botao.classList.remove("active"));
