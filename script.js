@@ -53,6 +53,9 @@ function validaInputPessoas() {
       inputPessoas.parentElement.classList.add('erro')
     } else {
       inputPessoas.parentElement.classList.remove('erro')
+      if (this.value.length > 7) {
+        this.value = this.value.slice(0, this.maxLength);
+      }
       calcula();
     }
   }
