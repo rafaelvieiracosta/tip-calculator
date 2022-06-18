@@ -2,7 +2,7 @@ const inputFatura = document.querySelector("#fatura");
 const botoes = document.querySelectorAll(".gorjeta > button");
 const inputGorjeta = document.querySelector("#personalizar");
 const inputPessoas = document.querySelector("#pessoas");
-const gorjeta = document.querySelector(".gorjeta > span");
+const gorjeta = document.querySelector(".tip > span");
 const total = document.querySelector(".total > span");
 const buttonReset = document.querySelector(".baixo > button");
 
