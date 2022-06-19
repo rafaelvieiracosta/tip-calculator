@@ -12,18 +12,11 @@ let porcentagemGorjeta;
 
 function calcula() {
   if (valorFatura && valorPessoas && porcentagemGorjeta) {
-    let valorFinalGorjeta =
-      (valorFatura * (porcentagemGorjeta / 100)) / valorPessoas;
+    let valorFinalGorjeta = (valorFatura * (porcentagemGorjeta / 100)) / valorPessoas;
     let valorFinalTotal = valorFatura / valorPessoas + valorFinalGorjeta;
 
-    gorjeta.innerHTML = valorFinalGorjeta.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
-    total.innerHTML = valorFinalTotal.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    });
+    gorjeta.innerHTML = `R$${valorFinalGorjeta.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    total.innerHTML = `R$${valorFinalTotal.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;-
 
     buttonReset.removeAttribute("disabled");
   }
@@ -33,10 +26,13 @@ function validaInputFatura() {
 
   function verificaInput() {
     valorFatura = this.value;
-    if(this.value === '0'){
+    if(+this.value === 0){
       inputFatura.parentElement.classList.add('erro')
     } else {
       inputFatura.parentElement.classList.remove('erro')
+      if (this.value.length > 3) {
+        this.value = this.value.slice(0, this.maxLength);
+      }
       calcula();
     }
   }
@@ -53,7 +49,7 @@ function validaInputPessoas() {
       inputPessoas.parentElement.classList.add('erro')
     } else {
       inputPessoas.parentElement.classList.remove('erro')
-      if (this.value.length > 7) {
+      if (this.value.length > 3) {
         this.value = this.value.slice(0, this.maxLength);
       }
       calcula();
@@ -93,6 +89,9 @@ function initPorcentagemGorjeta_ParteDoMeio() {
   });
 
   inputGorjeta.addEventListener("keyup", () => {
+    if(inputGorjeta.value > 100){
+      inputGorjeta.value = 100
+    }
     porcentagemGorjeta = +inputGorjeta.value;
     calcula();
   });

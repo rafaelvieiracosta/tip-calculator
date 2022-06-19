@@ -192,6 +192,8 @@ label {
   min-height: 417px;
   height: 100%;
   padding: 40px;
+  width: 415px;
+  max-width: 415px;
   border-radius: 13px;
 }
 
@@ -199,7 +201,7 @@ label {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 37px;
+  flex-wrap: wrap;
 }
 
 .resultado > span {
