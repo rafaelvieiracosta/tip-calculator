@@ -1,3 +1,4 @@
+//Componentes
 const inputFatura = document.querySelector("#fatura");
 const botoes = document.querySelectorAll(".gorjeta > button");
 const inputGorjeta = document.querySelector("#personalizar");
@@ -6,23 +7,13 @@ const gorjeta = document.querySelector(".tip > span");
 const total = document.querySelector(".total > span");
 const buttonReset = document.querySelector(".baixo > button");
 
+//Variáveis
 let valorFatura;
 let valorPessoas;
 let porcentagemGorjeta;
 
-function calcula() {
-  if (valorFatura && valorPessoas && porcentagemGorjeta) {
-    let valorFinalGorjeta = (valorFatura * (porcentagemGorjeta / 100)) / valorPessoas;
-    let valorFinalTotal = valorFatura / valorPessoas + valorFinalGorjeta;
-
-    gorjeta.innerHTML = `R$${valorFinalGorjeta.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-    total.innerHTML = `R$${valorFinalTotal.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;-
-
-    buttonReset.removeAttribute("disabled");
-  }
-}
-
-function validaInputFatura() {
+//Validações
+function initValidaInputFatura_ParteDeCima() {
 
   function verificaInput() {
     if(+this.value === 0){
@@ -30,8 +21,7 @@ function validaInputFatura() {
     } else {
       inputFatura.parentElement.classList.remove('erro')
       if (this.value.length > 7) {
-        console.log(this.maxLength)
-        this.value = this.value.slice(0, this.maxLength);
+        this.value = this.value.slice(0, -1);
       }
       valorFatura = this.value;
       calcula();
@@ -40,27 +30,7 @@ function validaInputFatura() {
 
   inputFatura.addEventListener("keyup", verificaInput);
 }
-validaInputFatura();
-
-function validaInputPessoas() {
-
-  function verificaInputP() {
-    if(+this.value === 0){
-      inputPessoas.parentElement.classList.add('erro')
-    } else {
-      inputPessoas.parentElement.classList.remove('erro')
-      if (this.value.length > 3) {
-        this.value = this.value.slice(0, this.maxLength);
-      }
-      valorPessoas = this.value;
-      calcula();
-    }
-  }
-
-  inputPessoas.addEventListener("keyup", verificaInputP);
-}
-validaInputPessoas();
-
+initValidaInputFatura_ParteDeCima();
 function initPorcentagemGorjeta_ParteDoMeio() {
 
   function aplicaClassAosBotoes() {
@@ -104,8 +74,27 @@ function initPorcentagemGorjeta_ParteDoMeio() {
   });
 }
 initPorcentagemGorjeta_ParteDoMeio();
+function initValidaInputPessoas_ParteDeBaixo() {
 
-function resetaTudo() {
+  function verificaInputP() {
+    if(+this.value === 0){
+      inputPessoas.parentElement.classList.add('erro')
+    } else {
+      inputPessoas.parentElement.classList.remove('erro')
+      if (this.value.length > 7) {
+        this.value = this.value.slice(0, this.maxLength);
+      }
+      valorPessoas = this.value;
+      calcula();
+    }
+  }
+
+  inputPessoas.addEventListener("keyup", verificaInputP);
+}
+initValidaInputPessoas_ParteDeBaixo();
+
+//Funções
+function initButtonResetar() {
   function reseta() {
     inputPessoas.value = "";
     inputFatura.value = "";
@@ -123,4 +112,16 @@ function resetaTudo() {
 
   buttonReset.addEventListener("click", reseta);
 }
-resetaTudo();
+initButtonResetar()
+
+function calcula() {
+  if (valorFatura && valorPessoas && porcentagemGorjeta) {
+    let valorFinalGorjeta = (valorFatura * (porcentagemGorjeta / 100)) / valorPessoas;
+    let valorFinalTotal = valorFatura / valorPessoas + valorFinalGorjeta;
+
+    gorjeta.innerHTML = `R$${valorFinalGorjeta.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+    total.innerHTML = `R$${valorFinalTotal.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;-
+
+    buttonReset.removeAttribute("disabled");
+  }
+}
