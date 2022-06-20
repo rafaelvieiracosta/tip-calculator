@@ -202,6 +202,7 @@ label {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .resultado > span {
@@ -264,6 +265,10 @@ label {
   .gorjeta{
     grid-template-columns: repeat(3, minmax(150px, 1fr));
     grid-auto-rows: 48px;
+  }
+  .bg{
+    width: 100%;
+    max-width: initial;
   }
 }
 @media(max-width: 600px){

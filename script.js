@@ -25,14 +25,15 @@ function calcula() {
 function validaInputFatura() {
 
   function verificaInput() {
-    valorFatura = this.value;
     if(+this.value === 0){
       inputFatura.parentElement.classList.add('erro')
     } else {
       inputFatura.parentElement.classList.remove('erro')
-      if (this.value.length > 3) {
+      if (this.value.length > 7) {
+        console.log(this.maxLength)
         this.value = this.value.slice(0, this.maxLength);
       }
+      valorFatura = this.value;
       calcula();
     }
   }
@@ -44,7 +45,6 @@ validaInputFatura();
 function validaInputPessoas() {
 
   function verificaInputP() {
-    valorPessoas = this.value;
     if(+this.value === 0){
       inputPessoas.parentElement.classList.add('erro')
     } else {
@@ -52,6 +52,7 @@ function validaInputPessoas() {
       if (this.value.length > 3) {
         this.value = this.value.slice(0, this.maxLength);
       }
+      valorPessoas = this.value;
       calcula();
     }
   }
@@ -109,6 +110,8 @@ function resetaTudo() {
     inputPessoas.value = "";
     inputFatura.value = "";
     inputGorjeta.value = "";
+    inputGorjeta.classList.remove("active");
+    inputGorjeta.type = "number";
     botoes.forEach((botao) => botao.classList.remove("active"));
     buttonReset.setAttribute("disabled", "");
     gorjeta.innerHTML = `R$ 0,00`;
